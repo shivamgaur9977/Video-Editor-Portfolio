@@ -31,9 +31,9 @@ export default function Projects() {
     // helper function to return style based on mediaFormat
     const getVideoStyle = (format) => {
         if (format === "reel") {
-            return { width: "300px", height: "533px" }; // vertical (9:16)
+            return { width: "auto", height: "auto" }; // vertical (9:16)
         } else if (format === "video") {
-            return { width: "533px", height: "300px" }; // horizontal (16:9)
+            // return { width: "533px", height: "300px" }; // horizontal (16:9)
         }
         return { width: "100%", height: "auto" }; // fallback
     };
@@ -48,6 +48,7 @@ export default function Projects() {
                             className="portfolio-item"
                             key={idx}
                             onClick={() => handleVideoPlay(project._id)}
+                            style={project.mediaFormat == "reel" ? {aspectRatio: "9/16"} : {aspectRatio: "16/9"}}
                         >
                             {project.mediaType === "image/png" ? (
                                 project.mediaUrl ? (
