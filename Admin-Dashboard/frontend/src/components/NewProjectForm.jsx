@@ -37,6 +37,7 @@ export default function NewProjectForm() {
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="Project Title"
+                required
             />
             <br />
             <input
@@ -44,10 +45,11 @@ export default function NewProjectForm() {
                 name="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Project Description"
+                placeholder="Project Description" 
+                required
             />
             <br />
-            <input type="file" name="media" onChange={(e) => setFile(e.target.files[0])} />
+            <input type="file" name="media" onChange={(e) => setFile(e.target.files[0])} required/>
             <br />
             <button type="submit">Add Project</button>
         </form>
