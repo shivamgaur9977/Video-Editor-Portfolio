@@ -25,6 +25,9 @@ const projectSchema = new Schema({
     }, 
     mediaType: {
         type: String
+    },
+    mediaFormat: {
+        type: String
     }
 })
 

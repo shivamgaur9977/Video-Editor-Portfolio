@@ -53,7 +53,8 @@ app.post("/projects", upload.single("media"), async (req, res) => {
       title: req.body.title,
       description: req.body.description,
       mediaUrl: req.file.path,
-      mediaType: req.file.mimetype
+      mediaType: req.file.mimetype,
+      mediaFormat: req.body.mediaFormat
     });
 
     await project.save();

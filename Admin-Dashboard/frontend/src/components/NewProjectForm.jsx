@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function NewProjectForm() {
-    const [formData, setFormData] = useState({ title: "", description: "" });
+    const [formData, setFormData] = useState({ title: "", description: "", mediaFormat: "" });
     const [file, setFile] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -12,6 +12,7 @@ export default function NewProjectForm() {
         submittedData.append("title", formData.title);
         submittedData.append("description", formData.description);
         submittedData.append("media", file);
+        submittedData.append("mediaFormat", formData.mediaFormat);
 
         for (let pair of submittedData.entries()) {
             console.log(pair[0], pair[1]);
@@ -29,6 +30,8 @@ export default function NewProjectForm() {
         }
     };
 
+    console.log(formData);
+
     return (
         <form onSubmit={handleSubmit}>
             <input
@@ -45,12 +48,19 @@ export default function NewProjectForm() {
                 name="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Project Description" 
+                placeholder="Project Description"
                 required
             />
             <br />
-            <input type="file" name="media" onChange={(e) => setFile(e.target.files[0])} required/>
+            <input type="file" name="media" onChange={(e) => setFile(e.target.files[0])} required />
             <br />
+            <label for="format">Choose Format:</label>
+            <select id="format" name="mediaFormat" value={formData.mediaFormat} onChange={(e) => setFormData({ ...formData, mediaFormate: e.target.value })}>
+                <option value="">None</option>
+                <option value="reel">Reel Format (9:16)</option>
+                <option value="video">Video Format (16:9)</option>
+            </select>
+            <br/>
             <button type="submit">Add Project</button>
         </form>
     );
