@@ -18,7 +18,7 @@ export default function NewProjectForm() {
         }
 
         try {
-            let res = await axios.post("http://localhost:8080/projects", submittedData);
+            let res = await axios.post("https://video-editor-portfolio-2.onrender.com/projects", submittedData);
             console.log("✅ Posted result:", res.data);
         } catch (err) {
             if (err.response) {
