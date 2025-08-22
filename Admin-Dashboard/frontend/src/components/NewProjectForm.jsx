@@ -55,7 +55,7 @@ export default function NewProjectForm() {
             <input type="file" name="media" onChange={(e) => setFile(e.target.files[0])} required />
             <br />
             <label for="format">Choose Format:</label>
-            <select id="format" name="mediaFormat" value={formData.mediaFormat} onChange={(e) => setFormData({ ...formData, mediaFormate: e.target.value })}>
+            <select id="format" name="mediaFormat" value={formData.mediaFormat} onChange={(e) => setFormData({ ...formData, mediaFormat: e.target.value })}>
                 <option value="">None</option>
                 <option value="reel">Reel Format (9:16)</option>
                 <option value="video">Video Format (16:9)</option>
