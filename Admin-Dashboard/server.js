@@ -8,8 +8,6 @@ import dotenv from "dotenv";
 import Project from './models/project.js';
 dotenv.config();
 
-console.log("Cloud name:", process.env.CLOUD_SECRET);
-
 const app = express();
 app.use(cors());
 

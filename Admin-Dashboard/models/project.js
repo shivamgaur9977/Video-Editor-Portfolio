@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
 const {Schema} = mongoose;
+import dotenv from "dotenv";
+dotenv.config();
 
 main()
+.then(() => console.log("DB is connected"))
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/portfolio');
+  await mongoose.connect(process.env.MONGODB_URL);
 };
 
 const projectSchema = new Schema({
