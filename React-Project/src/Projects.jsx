@@ -8,7 +8,7 @@ export default function Projects() {
     useEffect(() => {
         let getProjects = async () => {
             try {
-                let projects = await axios.get("http://localhost:8080/projects");
+                let projects = await axios.get("https://video-editor-portfolio-2.onrender.com/projects");
                 projects.data.map((project) => project.isMuted = true);
                 setAllProjects(projects.data);
             } catch (err) {
