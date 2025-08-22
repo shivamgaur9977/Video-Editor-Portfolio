@@ -27,7 +27,7 @@ export default function RequestForm() {
             <h2 className="section-title">Let's Create Together</h2>
             <p>Ready to bring your vision to life? Let's discuss your project and create something amazing together.</p>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form">
                 <div className="form-group">
                     <input type="text" placeholder="Your Name" name="name" value={formData.name} onChange={handleInput} required />
                     <input type="email" placeholder="Your Email" name="email" value={formData.email} onChange={handleInput} required />

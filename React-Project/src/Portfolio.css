@@ -544,3 +544,15 @@ footer {
         display: flex;
     }
 }
+
+@media (max-width: 321px) {
+    .hero {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 425px) {
+    .hero {
+        padding: 20px;
+    }
+}
