@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function Projects() {
-
     let [allProjects, setAllProjects] = useState([]);
 
     useEffect(() => {
@@ -20,36 +19,57 @@ export default function Projects() {
     }, []);
 
     let handleVideoPlay = (id) => {
-
         setAllProjects((prevProjects) =>
             prevProjects.map((project) =>
                 project._id === id
-                    ? { ...project, isMuted: !project.isMuted } // update only clicked
+                    ? { ...project, isMuted: !project.isMuted }
                     : project
             )
         );
     }
 
+    // helper function to return style based on mediaFormat
+    const getVideoStyle = (format) => {
+        if (format === "reel") {
+            return { width: "300px", height: "533px" }; // vertical (9:16)
+        } else if (format === "video") {
+            return { width: "533px", height: "300px" }; // horizontal (16:9)
+        }
+        return { width: "100%", height: "auto" }; // fallback
+    };
 
     return (
         <section className="portfolio-preview fade-in" id="portfolio">
             <h2 className="section-title">Featured Work</h2>
             <div className="portfolio-grid">
-
                 {allProjects.map((project, idx) => {
                     return (
-                        <div className="portfolio-item" key={idx} onClick={() => handleVideoPlay(project._id)}>
-                            {project.mediaType == "image/png" ?
+                        <div
+                            className="portfolio-item"
+                            key={idx}
+                            onClick={() => handleVideoPlay(project._id)}
+                        >
+                            {project.mediaType === "image/png" ? (
                                 project.mediaUrl ? (
-                                    <img src={`${project.mediaUrl}`} alt={project.title} width="100%" />
+                                    <img
+                                        src={project.mediaUrl}
+                                        alt={project.title}
+                                        width="100%"
+                                    />
                                 ) : (
                                     <p>⚠️ No Image Found</p>
                                 )
-                                : <video width="100%" autoPlay muted={project.isMuted} loop poster="thumbnail.jpg">
+                            ) : (
+                                <video
+                                    autoPlay
+                                    muted={project.isMuted}
+                                    loop
+                                    style={getVideoStyle(project.mediaFormat)} // 👈 here
+                                >
                                     <source src={project.mediaUrl} type="video/mp4" />
                                     Your browser does not support HTML5 video.
                                 </video>
-                            }
+                            )}
                             <div className="portfolio-overlay">
                                 <h4>{project.title}</h4>
                                 <p>{project.description}</p>
@@ -59,5 +79,5 @@ export default function Projects() {
                 })}
             </div>
         </section>
-    )
+    );
 }
