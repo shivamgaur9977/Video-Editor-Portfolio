@@ -3,7 +3,6 @@ import Navbar from './Components/Navbar';
 import './Portfolio.css';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import RequestForm from './Components/RequestForm';
-import Project from '../../Admin-Dashboard/models/project';
 import Projects from './Projects';
 import axios from 'axios';
 
