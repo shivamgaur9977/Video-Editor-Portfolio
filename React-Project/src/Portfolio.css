@@ -472,7 +472,7 @@ footer {
     .portfolio-item {
         aspect-ratio: 9.2/16;
         max-width: 31rem;
-        width: 93%;
+        /* width: 93%; */
     }
 
     img {
@@ -580,11 +580,15 @@ footer {
 }
 
 @media (width: 425px){
-    .portfolio-item {
-        aspect-ratio: 0 !important;
-    }
     .portfolio-item video {
         height: auto !important;
         width: 100% !important;
     }
+}
+
+.portfolio-grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
